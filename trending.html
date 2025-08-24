@@ -1,0 +1,36 @@
+<!-- trending.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AI Repurposer — Trending</title>
+<style>
+  :root{--bg:#1a1206;--card:#2b1a0e;--accent:#FFB86B}
+  body{margin:0;background:linear-gradient(180deg,#120a04,#1a1206);color:#fff;font-family:Inter}
+  nav{position:sticky;top:0;padding:12px 20px;background:rgba(0,0,0,0.45)}
+  nav a{color:#ffd7a8;margin-left:12px;text-decoration:none}
+  .hero{padding:100px 24px;text-align:center}
+  h1{color:var(--accent)}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:28px;padding:0 24px}
+  .tile{background:var(--card);padding:20px;border-radius:12px;transform-origin:center;transition:transform .25s}
+  .tile:hover{transform:translateY(-8px) scale(1.02)}
+  .tile h3{margin:0 0 8px}
+  .small{opacity:.85;font-size:.94rem}
+  footer{padding:18px;text-align:center;color:#f4d8b8}
+</style>
+</head>
+<body>
+  <nav><strong>AI Repurposer</strong><div style="float:right"><a href="index.html">Home</a></div></nav>
+  <div class="hero">
+    <h1>Trending: short-form, templates & AI art</h1>
+    <p class="small">A snapshot of trends creators are using this week.</p>
+  </div>
+  <div class="tiles">
+    <div class="tile"><h3>Short-form Video</h3><p class="small">Micro-narratives & repurposed blog snippets as 15–30s clips</p></div>
+    <div class="tile"><h3>Influencer Templates</h3><p class="small">Reusable templates for reels and stories are performing best</p></div>
+    <div class="tile"><h3>AI Assistants</h3><p class="small">Conversational assistants powering conversion flows</p></div>
+    <div class="tile"><h3>Repurposing Workflows</h3><p class="small">Automated pipelines: transcript → short scripts → captions</p></div>
+  </div>
+  <footer>© 2025 Tanko Yahaya</footer>
+</body>
+</html>
