@@ -1,0 +1,59 @@
+<!-- news.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AI Repurposer — News</title>
+<style>
+  :root{--bg:#071F3E;--card:#082B49;--accent:#21E6C1}
+  body{margin:0;background:linear-gradient(180deg,#041225,#071F3E);color:#e6f7f1;font-family:Inter,system-ui}
+  nav{position:sticky;top:0;padding:12px 20px;background:rgba(2,12,25,0.6);display:flex;justify-content:space-between;align-items:center}
+  nav a{color:#bfeee0;margin-left:12px;text-decoration:none}
+  .wrap{padding:100px 24px 60px}
+  h1{color:var(--accent);margin-bottom:8px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:28px}
+  .flip{perspective:1200px}
+  .card{position:relative;height:260px;border-radius:12px;background:var(--card);overflow:hidden;box-shadow:0 14px 40px rgba(2,6,12,0.6);transition:transform .45s}
+  .card:hover{transform:translateY(-8px)}
+  .card .img{height:140px;background-size:cover;background-position:center}
+  .card .body{padding:14px}
+  .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.04);font-weight:600;color:#cfeee0;margin-bottom:8px}
+  footer{padding:24px;text-align:center;color:#9fded0}
+  /* small animations */
+  .pulse{animation:pulse 3s infinite alternate}
+  @keyframes pulse{from{box-shadow:0 10px 40px rgba(33,230,193,0.08)}to{box-shadow:0 18px 50px rgba(33,230,193,0.18)}}
+</style>
+</head>
+<body>
+  <nav><strong>AI Repurposer</strong>
+    <div><a href="index.html">Home</a><a href="trending.html">Trending</a><a href="gallery.html">Gallery</a><a href="templates.html">Templates</a></div>
+  </nav>
+
+  <main class="wrap">
+    <h1>Latest AI & Marketing News</h1>
+    <p>Hand-curated short takes on today's AI headlines.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="img" style="background-image:url('https://source.unsplash.com/640x480/?ai,marketing')"></div>
+        <div class="body">
+          <div class="tag">Marketing</div>
+          <h3>AI-Powered Creative Engines</h3>
+          <p>New models accelerate content ideation by turning outlines into full scripts in minutes.</p>
+        </div>
+      </div>
+
+      <div class="card pulse">
+        <div class="img" style="background-image:url('https://source.unsplash.com/640x480/?robotics,future')"></div>
+        <div class="body"><div class="tag">Automation</div><h3>Automation at Scale</h3><p>Brands adopt AI automation for campaign scaling, trimming production time by 70%.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="img" style="background-image:url('https://source.unsplash.com/640x480/?data,analytics')"></div>
+        <div class="body"><div class="tag">Data</div><h3>Data-Informed Creative</h3><p>Analytics-driven content recommendations now built into editing tools.</p></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>© 2025 Tanko Yahaya — News feed (static demo)</footer>
+</body>
+</html>
