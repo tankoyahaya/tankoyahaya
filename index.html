@@ -1,0 +1,123 @@
+<!-- index.html - Home (violet/pink neon theme) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AI Repurposer — Home</title>
+<style>
+  :root{--bg:#0b0710;--accent1:#FF4FD8;--accent2:#7A5CFF;--glass:rgba(255,255,255,0.06)}
+  *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:#fff;min-height:100vh}
+  nav{position:sticky;top:0;backdrop-filter: blur(6px);background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.15));display:flex;justify-content:space-between;align-items:center;padding:16px 28px;z-index:20}
+  nav .brand{font-weight:700;letter-spacing:0.6px;color:var(--accent1)}
+  nav a{color:#dfe; margin-left:14px;text-decoration:none;font-weight:600}
+  header.hero{padding:120px 28px 80px;text-align:center;position:relative;overflow:hidden}
+  .hero-card{display:inline-block;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:36px;border-radius:20px;backdrop-filter: blur(8px);box-shadow:0 10px 40px rgba(122,92,255,0.12)}
+  .hero-title{font-size:2.8rem;margin:0 0 12px;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero-sub{color:#cfd5ff;margin-bottom:18px}
+  .cta{padding:12px 22px;border-radius:999px;border:0;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#07102b;font-weight:700;cursor:pointer;box-shadow:0 8px 30px rgba(122,92,255,0.18)}
+  /* quick features */
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:1100px;margin:34px auto 60px;padding:0 18px}
+  .feature{background:var(--glass);padding:18px;border-radius:14px;border:1px solid rgba(122,92,255,0.08);transition:transform .25s}
+  .feature:hover{transform:translateY(-8px)}
+  /* chat orb button */
+  .orb{position:fixed;right:24px;bottom:24px;width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent1),var(--accent2));box-shadow:0 18px 40px rgba(122,92,255,0.25);cursor:pointer;z-index:30}
+  .orb:after{content:"";position:absolute;width:160px;height:160px;border-radius:50%;filter:blur(36px);opacity:.28;background:linear-gradient(135deg,var(--accent1),var(--accent2))}
+  /* chatbox panel */
+  .chat-panel{position:fixed;right:110px;bottom:28px;width:360px;background:rgba(10,8,16,0.96);border-radius:12px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 20px 60px rgba(0,0,0,0.6);overflow:hidden;display:none;z-index:35}
+  .chat-head{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.03);font-weight:700}
+  .chat-body{padding:12px;height:220px;overflow:auto}
+  .chat-input{display:flex;padding:12px;border-top:1px solid rgba(255,255,255,0.03)}
+  .chat-input input{flex:1;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff}
+  .chat-input button{margin-left:8px;padding:8px 12px;border-radius:8px;border:0;background:var(--accent1);color:#07031a;cursor:pointer}
+  footer{padding:28px;text-align:center;color:#9aa0ff;opacity:.9}
+  /* floating orbs background (canvas is separate) */
+  @media (max-width:700px){.hero-title{font-size:2rem}.chat-panel{right:18px;width:320px}}
+</style>
+</head>
+<body>
+  <canvas id="bgCanvasHome" style="position:fixed;inset:0;z-index:-1"></canvas>
+
+  <nav>
+    <div class="brand">AI Repurposer</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="news.html">News</a>
+      <a href="trending.html">Trending</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="templates.html">Templates</a>
+      <a href="editor.html">Editor</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-card">
+      <h1 class="hero-title">Repurpose Content — Faster, Smarter</h1>
+      <p class="hero-sub">Turn blogs, podcasts and videos into platform-optimized pieces with AI. Templates, editors and automation — all in one place.</p>
+      <button class="cta" onclick="location.href='templates.html'">Explore Templates</button>
+    </div>
+
+    <div class="features" aria-hidden>
+      <div class="feature"><strong>Multi-format</strong><div>Blog → Video → Thread → Caption</div></div>
+      <div class="feature"><strong>One-click Copy</strong><div>Generate and copy optimized posts instantly</div></div>
+      <div class="feature"><strong>SEO & Tone</strong><div>Adjust tone, length and SEO suggestions</div></div>
+      <div class="feature"><strong>Fast Exports</strong><div>Export for YouTube, Instagram, X, LinkedIn</div></div>
+    </div>
+  </header>
+
+  <div class="orb" id="orbBtn" title="Open chat">💬</div>
+
+  <div class="chat-panel" id="chatPanel" aria-hidden="true">
+    <div class="chat-head">AI Assistant</div>
+    <div class="chat-body" id="chatBody"><div style="opacity:.6">Hi — ask me to repurpose content or show templates.</div></div>
+    <div class="chat-input">
+      <input id="chatInput" placeholder="Type your question..." />
+      <button onclick="sendHome()">Send</button>
+    </div>
+  </div>
+
+  <footer>© 2025 Tanko Yahaya • AI Content Repurposer — <span style="opacity:.8">Unique UI & fast workflows</span></footer>
+
+<script>
+/* Floating colorful orbs background for home (canvas) */
+const canvas = document.getElementById('bgCanvasHome');
+const ctx = canvas.getContext('2d');
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+resize();window.addEventListener('resize',resize);
+const orbs=[];
+for(let i=0;i<18;i++){orbs.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:10+Math.random()*30,vx:(Math.random()-0.5)*0.4,vy:(Math.random()-0.5)*0.4, hue: Math.random()*360})}
+function drawOrbs(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  orbs.forEach(o=>{
+    o.x+=o.vx; o.y+=o.vy;
+    if(o.x< -100) o.x=canvas.width+100; if(o.x>canvas.width+100) o.x=-100;
+    if(o.y< -100) o.y=canvas.height+100; if(o.y>canvas.height+100) o.y=-100;
+    const g = ctx.createRadialGradient(o.x,o.y,0,o.x,o.y,o.r);
+    g.addColorStop(0, `hsla(${o.hue},100%,70%,0.9)`);
+    g.addColorStop(0.5, `hsla(${o.hue+30},80%,60%,0.35)`);
+    g.addColorStop(1, `rgba(10,8,20,0)`);
+    ctx.fillStyle=g;
+    ctx.beginPath(); ctx.arc(o.x,o.y,o.r,0,Math.PI*2); ctx.fill();
+  });
+  requestAnimationFrame(drawOrbs);
+}
+drawOrbs();
+
+/* Chat interactions (demo) */
+const orbBtn = document.getElementById('orbBtn'), chatPanel = document.getElementById('chatPanel');
+orbBtn.addEventListener('click', ()=>{ chatPanel.style.display = chatPanel.style.display === 'block' ? 'none' : 'block'; chatPanel.setAttribute('aria-hidden', chatPanel.style.display!=='block'); });
+function addChat(from, text){
+  const b=document.getElementById('chatBody'); const div=document.createElement('div'); div.style.margin='8px 0'; div.style.padding='8px'; div.style.borderRadius='8px';
+  if(from==='user'){div.style.background='linear-gradient(90deg,#ffffff10,#ffffff04)';div.style.color='#fff';div.innerText='You: '+text}else{div.style.background='linear-gradient(90deg,#ff4fd81a,#7a5cff12)';div.style.color='#fff';div.innerText='AI: '+text}
+  b.appendChild(div); b.scrollTop=b.scrollHeight;
+}
+function sendHome(){
+  const t=document.getElementById('chatInput'); if(!t.value) return; addChat('user', t.value); const q=t.value; t.value='';
+  addChat('ai', 'Thinking…'); setTimeout(()=>{addChat('ai', `Demo reply: I can repurpose "${q}" as a short post, Instagram caption, and an outline.`)},900);
+}
+</script>
+</body>
+</html>
